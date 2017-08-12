@@ -1,5 +1,46 @@
-# Application:  IOS Android with Common c++ library Iocpp
+# Application:  IOS Android with Common c++ library Iacpp
 This App is to demonstrate Android IOS using common c++ library.
+# Build Instructions.
+
+# Android
+	1. Install SDK and SDK and set the NDK path and sdk path in environment variables.
+	2. Download the code and build.
+# Static library for IOS.
+```
+ Install  ios cmake toolchain from here https://github.com/cristeab/ios-cmake
+
+Unzip the ios.Cmake into folder similar to $NDK_ROOT/toolchains/IOS
+
+
+ To build the ios libraries from these libraries, use the below commands . after the build copy out the 4 header files to attach with static library.
+ after that attach the libraries to the ios project and add header files to ios project.
+
+
+$ rmdir buildios
+$ mkdir buildios
+$ cd  buildios
+$ cmake .. -DCMAKE_TOOLCHAIN_FILE=$NDK_ROOT/toolchains/IOS/iOS.cmake -DIOS_PLATFORM=OS
+$ make
+$ cmake .. -DCMAKE_TOOLCHAIN_FILE=$NDK_ROOT/toolchains/IOS/iOS.cmake -DIOS_PLATFORM=SIMULATOR64
+$ make
+```
+
+Now check the distribution folder you should see the folder /IOS/SIMULATOR64 AND /IOS/OS with the libraries.
+Copy the libraries to the iOS project along with the header files below and build. By default the files were added to the project. 
+
+```
+$ copy these 4 header files to the ios project. .
+$ /src/main/cpp/ContactsCore/api/ContactsCoreApi.hpp
+$ /src/main/cpp/ContactsCore/model/Contact.hpp
+$ /src/main/cpp/JsonLib/JSON.hpp
+$ /src/main/cpp/JsonLib/JSONValue.hpp
+
+```
+	
+# IOS
+
+Import the project in Xcode and check for static libraries and header files and build. 
+
 # Architecture
 #  -------------------------------Java---------------------
 # Java UI:
@@ -92,9 +133,10 @@ controller/Controller is base controller interface, which is implemented in Cont
     7. cmake to build static library, export out library, build with container shared library.
     8. Android app to test the calls and post to UI.
     9. ios code to test the calls and print to log.
+    10. toolchain to build ios compatible library from android studio.
+    11. attaching .a to the ios project.
+   
 # ------------------------what can be done further---------------
-    1. finding toolchain to build ios compatible library from android studio.
-    2. attaching .a to the ios project.
     3. ui for ios, listview/tableview.
     4. code formatter for ios.
     5. adding code from folders retaining folder structure and build from Android code base without copying.

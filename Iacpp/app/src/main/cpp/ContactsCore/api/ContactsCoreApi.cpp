@@ -2,7 +2,7 @@
 // Created by SheshuKumar Inguva on 8/2/17.
 //
 
-#include "ContactsCoreApi.h"
+#include "ContactsCoreApi.hpp"
 
 ContactsCoreApi::ContactsCoreApi() {
     initData();

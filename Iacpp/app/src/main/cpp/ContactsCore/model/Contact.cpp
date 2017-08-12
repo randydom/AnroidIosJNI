@@ -2,7 +2,7 @@
 // Created by SheshuKumar Inguva on 8/2/17.
 //
 
-#include "Contact.h"
+#include "Contact.hpp"
 
 std::string *Contact::getFirstName() {
     return firstName;

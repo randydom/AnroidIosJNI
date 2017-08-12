@@ -6,16 +6,13 @@
 #define IACPP_CONTACTS_H
 
 #include <vector>
-#include "Contact.hpp"
+#include "../model/Contact.hpp"
 
 extern "C" {
-
-extern void notifyUpdateContact(int (*callback)(Contact *, Contact*));
+extern void notifyUpdateContact(int (*callback)(Contact *, Contact *));
 extern void clearData();
 extern std::vector<Contact *> *initData();
 extern void addContactWebservice(Contact *contact, int (*callback)(Contact *));
 extern std::vector<Contact *> *getContacts();
-
-
 }
 #endif //IACPP_CONTACTS_H

@@ -28,7 +28,7 @@
 #include <sstream>
 #include <iostream>
 #include <math.h>
-#include "JSONValue.h"
+#include "JSONValue.hpp"
 
 #ifdef __MINGW32__
 #define wcsncasecmp wcsnicmp

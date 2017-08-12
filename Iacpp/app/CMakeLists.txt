@@ -1,6 +1,8 @@
 # For more information about using CMake with Android Studio, read the
 # documentation: https://d.android.com/studio/projects/add-native-code.html
 
+# For ios static library using ios cmake toolchain from here https://github.com/cristeab/ios-cmake
+
 # Sets the minimum version of CMake required to build the native library.
 
 cmake_minimum_required(VERSION 3.4.1)
@@ -29,10 +31,24 @@ add_library(contacts-core-lib STATIC
 
 # copy out the lib binary... need to leave the static lib around to pass gradle check
 set(distribution_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../distribution)
+
+IF (${ANDROID})
 set_target_properties(contacts-core-lib
                       PROPERTIES
                       ARCHIVE_OUTPUT_DIRECTORY
                       "${distribution_DIR}/contacts-core-lib/lib/${ANDROID_ABI}")
+ELSE()
+# set path for IOS and remove lib prefix. xcode linker does not like "lib" prefix
+set_target_properties(contacts-core-lib
+                      PROPERTIES
+                      ARCHIVE_OUTPUT_DIRECTORY
+                      "${distribution_DIR}/contacts-core-lib/lib/IOS/${IOS_PLATFORM}"
+                      PREFIX ""
+                      )
+
+
+
+ENDIF()
 
 # copy out lib header file...somehow stops build
 #add_custom_command(TARGET contacts-core-lib POST_BUILD
@@ -46,8 +62,28 @@ set_target_properties(contacts-core-lib
 
 
 
-#---------------------------------------------------------------------------------------------------
+# install  ios cmake toolchain from here https://github.com/cristeab/ios-cmake
+# To build the ios libraries from these libraries, use the below commands . after the build copy out the 4 header files to attach with static library.
+# after that attach the libraries to the ios project and add header files to ios project.
 
+# rmdir ../buildios
+# mkdir ../buildios
+# cd ../buildios
+# cmake .. -DCMAKE_TOOLCHAIN_FILE=/Users/Sheshu/Library/Android/sdk/ndk-bundle/toolchains/IOS/iOS.cmake -DIOS_PLATFORM=OS
+# make
+# cmake .. -DCMAKE_TOOLCHAIN_FILE=/Users/Sheshu/Library/Android/sdk/ndk-bundle/toolchains/IOS/iOS.cmake -DIOS_PLATFORM=SIMULATOR64
+# make
+# copy these 4 header files to the ios project. .
+# /src/main/cpp/ContactsCore/api/ContactsCoreApi.hpp
+# /src/main/cpp/ContactsCore/model/Contact.hpp
+# /src/main/cpp/JsonLib/JSON.hpp
+# /src/main/cpp/JsonLib/JSONValue.hpp
+
+
+
+#---------------------------------------------------------------------------------------------------
+IF (${ANDROID})
+# If this is for IOS dont add shared library stuff. we can stop with static lib above.
 
 add_library( # Sets the name of the library.
              contactsSdk-lib
@@ -58,6 +94,11 @@ add_library( # Sets the name of the library.
              # Provides a relative path to your source file(s).
              src/main/cpp/ContactsJni/contactsSdkJni.cpp
              )
+
+
+
+
+
 
 # Searches for a specified prebuilt library and stores the path as a
 # variable. Because CMake includes system libraries in the search path by
@@ -84,3 +125,16 @@ target_link_libraries( # Specifies the target library.
                        ${log-lib}
 
                        )
+ELSE()
+
+                       set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fobjc-abi-version=2 -fobjc-arc -std=gnu++11 -stdlib=libc++ -isysroot ${CMAKE_OSX_SYSROOT}")
+                       set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fobjc-abi-version=2 -fobjc-arc -isysroot ${CMAKE_OSX_SYSROOT}")
+
+                       IF (${SIMULATOR})
+                         set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -mios-simulator-version-min=6.0")
+                       ENDIF()
+
+                       # Library
+                       set_xcode_property (contacts-core-lib GCC_GENERATE_DEBUGGING_SYMBOLS YES)
+
+ENDIF()

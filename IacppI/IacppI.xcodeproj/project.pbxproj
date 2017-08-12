@@ -7,11 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B3AC8A481F368CE000D67C53 /* Contact.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B3AC8A431F368CE000D67C53 /* Contact.cpp */; };
-		B3AC8A4A1F368CE000D67C53 /* ContactsCoreApi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B3AC8A461F368CE000D67C53 /* ContactsCoreApi.cpp */; };
-		B3AC8A4F1F368D2400D67C53 /* JSON.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B3AC8A4C1F368D2400D67C53 /* JSON.cpp */; };
-		B3AC8A501F368D2400D67C53 /* JSONValue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B3AC8A4D1F368D2400D67C53 /* JSONValue.cpp */; };
-		B3AC8A551F3690C300D67C53 /* ContactsWebService.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B3AC8A531F3690C300D67C53 /* ContactsWebService.cpp */; };
+		B3AC8AB11F3ECE3700D67C53 /* contacts-core-lib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B3AC8AB01F3ECE3700D67C53 /* contacts-core-lib.a */; };
+		B3AC8AB31F3ECE3F00D67C53 /* contacts-core-lib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B3AC8AB21F3ECE3F00D67C53 /* contacts-core-lib.a */; };
 		B3AE1B4D1F3659F000FD0C9C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B3AE1B4C1F3659F000FD0C9C /* main.m */; };
 		B3AE1B501F3659F000FD0C9C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B3AE1B4F1F3659F000FD0C9C /* AppDelegate.m */; };
 		B3AE1B531F3659F000FD0C9C /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = B3AE1B521F3659F000FD0C9C /* ViewController.mm */; };
@@ -23,16 +20,18 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		B3AC8A431F368CE000D67C53 /* Contact.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Contact.cpp; path = IacppI/Contact.cpp; sourceTree = "<group>"; };
-		B3AC8A441F368CE000D67C53 /* Contact.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Contact.hpp; path = IacppI/Contact.hpp; sourceTree = "<group>"; };
-		B3AC8A461F368CE000D67C53 /* ContactsCoreApi.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ContactsCoreApi.cpp; path = IacppI/ContactsCoreApi.cpp; sourceTree = "<group>"; };
-		B3AC8A471F368CE000D67C53 /* ContactsCoreApi.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ContactsCoreApi.hpp; path = IacppI/ContactsCoreApi.hpp; sourceTree = "<group>"; };
-		B3AC8A4B1F368D2400D67C53 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSON.h; path = ../JSON.h; sourceTree = "<group>"; };
-		B3AC8A4C1F368D2400D67C53 /* JSON.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = JSON.cpp; path = ../JSON.cpp; sourceTree = "<group>"; };
-		B3AC8A4D1F368D2400D67C53 /* JSONValue.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = JSONValue.cpp; path = ../JSONValue.cpp; sourceTree = "<group>"; };
-		B3AC8A4E1F368D2400D67C53 /* JSONValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSONValue.h; path = ../JSONValue.h; sourceTree = "<group>"; };
-		B3AC8A531F3690C300D67C53 /* ContactsWebService.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ContactsWebService.cpp; sourceTree = "<group>"; };
-		B3AC8A541F3690C300D67C53 /* ContactsWebService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsWebService.h; sourceTree = "<group>"; };
+		B3AC8A8B1F3D559C00D67C53 /* ContactsCore */ = {isa = PBXFileReference; lastKnownFileType = folder; name = ContactsCore; path = ContactsCoreLib/ContactsCoreLib/ContactsCoreLib/ContactsCore; sourceTree = "<group>"; };
+		B3AC8A8D1F3D55C400D67C53 /* IacppI.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = IacppI.xcodeproj; sourceTree = "<group>"; };
+		B3AC8A9E1F3ECBE700D67C53 /* OS */ = {isa = PBXFileReference; lastKnownFileType = folder; name = OS; path = "../Iacpp/distribution/contacts-core-lib/lib/IOS/OS"; sourceTree = "<group>"; };
+		B3AC8A9F1F3ECBE700D67C53 /* SIMULATOR64 */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SIMULATOR64; path = "../Iacpp/distribution/contacts-core-lib/lib/IOS/SIMULATOR64"; sourceTree = "<group>"; };
+		B3AC8AA21F3ECC1D00D67C53 /* ContactsCoreApi.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ContactsCoreApi.hpp; path = ../Iacpp/app/src/main/cpp/ContactsCore/api/ContactsCoreApi.hpp; sourceTree = "<group>"; };
+		B3AC8AA31F3ECC4100D67C53 /* Contact.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Contact.hpp; path = ../Iacpp/app/src/main/cpp/ContactsCore/model/Contact.hpp; sourceTree = "<group>"; };
+		B3AC8AA41F3ECC7400D67C53 /* JSON.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = JSON.hpp; path = ../Iacpp/app/src/main/cpp/JsonLib/JSON.hpp; sourceTree = "<group>"; };
+		B3AC8AA51F3ECC7400D67C53 /* JSONValue.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = JSONValue.hpp; path = ../Iacpp/app/src/main/cpp/JsonLib/JSONValue.hpp; sourceTree = "<group>"; };
+		B3AC8AA61F3ECD0000D67C53 /* libcontacts-core-lib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libcontacts-core-lib.a"; path = "../Iacpp/distribution/contacts-core-lib/lib/IOS/OS/libcontacts-core-lib.a"; sourceTree = "<group>"; };
+		B3AC8AA81F3ECD1200D67C53 /* libcontacts-core-lib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libcontacts-core-lib.a"; path = "../Iacpp/distribution/contacts-core-lib/lib/IOS/SIMULATOR64/libcontacts-core-lib.a"; sourceTree = "<group>"; };
+		B3AC8AB01F3ECE3700D67C53 /* contacts-core-lib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "contacts-core-lib.a"; path = "../Iacpp/distribution/contacts-core-lib/lib/IOS/SIMULATOR64/contacts-core-lib.a"; sourceTree = "<group>"; };
+		B3AC8AB21F3ECE3F00D67C53 /* contacts-core-lib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "contacts-core-lib.a"; path = "../Iacpp/distribution/contacts-core-lib/lib/IOS/OS/contacts-core-lib.a"; sourceTree = "<group>"; };
 		B3AE1B481F3659F000FD0C9C /* IacppI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IacppI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3AE1B4C1F3659F000FD0C9C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B3AE1B4E1F3659F000FD0C9C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -65,62 +64,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				B3AE1B6A1F36642600FD0C9C /* libstdc++.6.0.9.tbd in Frameworks */,
+				B3AC8AB11F3ECE3700D67C53 /* contacts-core-lib.a in Frameworks */,
+				B3AC8AB31F3ECE3F00D67C53 /* contacts-core-lib.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		B3AC8A511F368D5300D67C53 /* JsonLib */ = {
-			isa = PBXGroup;
-			children = (
-				B3AC8A4B1F368D2400D67C53 /* JSON.h */,
-				B3AC8A4C1F368D2400D67C53 /* JSON.cpp */,
-				B3AC8A4D1F368D2400D67C53 /* JSONValue.cpp */,
-				B3AC8A4E1F368D2400D67C53 /* JSONValue.h */,
-			);
-			name = JsonLib;
-			path = IacppI;
-			sourceTree = "<group>";
-		};
-		B3AC8A561F36912400D67C53 /* api */ = {
-			isa = PBXGroup;
-			children = (
-				B3AC8A461F368CE000D67C53 /* ContactsCoreApi.cpp */,
-				B3AC8A471F368CE000D67C53 /* ContactsCoreApi.hpp */,
-			);
-			name = api;
-			sourceTree = "<group>";
-		};
-		B3AC8A571F36912C00D67C53 /* webservice */ = {
-			isa = PBXGroup;
-			children = (
-				B3AC8A531F3690C300D67C53 /* ContactsWebService.cpp */,
-				B3AC8A541F3690C300D67C53 /* ContactsWebService.h */,
-			);
-			name = webservice;
-			sourceTree = "<group>";
-		};
-		B3AC8A581F36913400D67C53 /* model */ = {
-			isa = PBXGroup;
-			children = (
-				B3AC8A431F368CE000D67C53 /* Contact.cpp */,
-				B3AC8A441F368CE000D67C53 /* Contact.hpp */,
-			);
-			name = model;
-			sourceTree = "<group>";
-		};
-		B3AC8A591F3691FE00D67C53 /* ContactsCore */ = {
-			isa = PBXGroup;
-			children = (
-				B3AC8A561F36912400D67C53 /* api */,
-				B3AC8A571F36912C00D67C53 /* webservice */,
-				B3AC8A581F36913400D67C53 /* model */,
-				B3AC8A511F368D5300D67C53 /* JsonLib */,
-			);
-			name = ContactsCore;
-			sourceTree = "<group>";
-		};
 		B3AC8A5A1F36934C00D67C53 /* ContactsIOSAPI */ = {
 			isa = PBXGroup;
 			children = (
@@ -130,10 +81,36 @@
 			name = ContactsIOSAPI;
 			sourceTree = "<group>";
 		};
+		B3AC8A8E1F3D55C400D67C53 /* Products */ = {
+			isa = PBXGroup;
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B3AC8AAA1F3ECD8000D67C53 /* simulatorLib */ = {
+			isa = PBXGroup;
+			children = (
+				B3AC8AB01F3ECE3700D67C53 /* contacts-core-lib.a */,
+			);
+			name = simulatorLib;
+			sourceTree = "<group>";
+		};
+		B3AC8AAB1F3ECD8F00D67C53 /* deviceLib */ = {
+			isa = PBXGroup;
+			children = (
+				B3AC8AB21F3ECE3F00D67C53 /* contacts-core-lib.a */,
+			);
+			name = deviceLib;
+			sourceTree = "<group>";
+		};
 		B3AE1B3F1F3659F000FD0C9C = {
 			isa = PBXGroup;
 			children = (
-				B3AC8A591F3691FE00D67C53 /* ContactsCore */,
+				B3AC8AAB1F3ECD8F00D67C53 /* deviceLib */,
+				B3AC8AAA1F3ECD8000D67C53 /* simulatorLib */,
+				B3AC8AA41F3ECC7400D67C53 /* JSON.hpp */,
+				B3AC8AA51F3ECC7400D67C53 /* JSONValue.hpp */,
+				B3AC8AA31F3ECC4100D67C53 /* Contact.hpp */,
+				B3AC8AA21F3ECC1D00D67C53 /* ContactsCoreApi.hpp */,
 				B3AE1B4A1F3659F000FD0C9C /* IacppI */,
 				B3AE1B491F3659F000FD0C9C /* Products */,
 				B3AE1B661F365CD900FD0C9C /* Frameworks */,
@@ -176,6 +153,12 @@
 		B3AE1B661F365CD900FD0C9C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B3AC8AA81F3ECD1200D67C53 /* libcontacts-core-lib.a */,
+				B3AC8AA61F3ECD0000D67C53 /* libcontacts-core-lib.a */,
+				B3AC8A9E1F3ECBE700D67C53 /* OS */,
+				B3AC8A9F1F3ECBE700D67C53 /* SIMULATOR64 */,
+				B3AC8A8D1F3D55C400D67C53 /* IacppI.xcodeproj */,
+				B3AC8A8B1F3D559C00D67C53 /* ContactsCore */,
 				B3AE1B7E1F366AEB00FD0C9C /* libcontacts-core-libeabi.a */,
 				B3AE1B7F1F366AEB00FD0C9C /* libcontacts-core-libv7.a */,
 				B3AE1B801F366AEB00FD0C9C /* libcontacts-core-libx8664.a */,
@@ -239,6 +222,12 @@
 			mainGroup = B3AE1B3F1F3659F000FD0C9C;
 			productRefGroup = B3AE1B491F3659F000FD0C9C /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = B3AC8A8E1F3D55C400D67C53 /* Products */;
+					ProjectRef = B3AC8A8D1F3D55C400D67C53 /* IacppI.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				B3AE1B471F3659F000FD0C9C /* IacppI */,
@@ -265,14 +254,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				B3AE1B531F3659F000FD0C9C /* ViewController.mm in Sources */,
-				B3AC8A481F368CE000D67C53 /* Contact.cpp in Sources */,
 				B3AE1B501F3659F000FD0C9C /* AppDelegate.m in Sources */,
-				B3AC8A551F3690C300D67C53 /* ContactsWebService.cpp in Sources */,
-				B3AC8A4F1F368D2400D67C53 /* JSON.cpp in Sources */,
 				B3AE1B4D1F3659F000FD0C9C /* main.m in Sources */,
 				B3AE1B6D1F3666A200FD0C9C /* ContactsApiIos.cpp in Sources */,
-				B3AC8A4A1F368CE000D67C53 /* ContactsCoreApi.cpp in Sources */,
-				B3AC8A501F368D2400D67C53 /* JSONValue.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

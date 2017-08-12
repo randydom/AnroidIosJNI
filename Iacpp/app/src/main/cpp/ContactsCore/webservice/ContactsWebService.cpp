@@ -1,5 +1,5 @@
-#include "ContactsWebService.h"
-#include "../../JsonLib/JSONValue.h"
+#include "ContactsWebService.hpp"
+#include "../../JsonLib/JSONValue.hpp"
 #include <thread>
 #include <iostream>     // std::cout
 #include <sstream>      // std::stringstream

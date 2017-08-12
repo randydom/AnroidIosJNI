@@ -10,14 +10,14 @@
 #define ContactsApiIos_hpp
 
 #include <stdio.h>
-#import "ContactsCoreApi.hpp"
 #import "Contact.hpp"
+#import "ContactsCoreApi.hpp"
 extern "C"{
-void freeAllStatic();
-ContactsCoreApi *getContactsApi();
-std::vector<Contact *> * getAllContacts();
-void addContact(Contact* contact, int (*callback)(Contact *));
-void setContactUpdatedListener(int (*callback)(Contact *, Contact*));
+    void freeAllStatic();
+    ContactsCoreApi *getContactsApi();
+    std::vector<Contact *> * getAllContacts();
+    void addContact(Contact* contact, int (*callback)(Contact *));
+    void setContactUpdatedListener(int (*callback)(Contact *, Contact*));
 
 
 }

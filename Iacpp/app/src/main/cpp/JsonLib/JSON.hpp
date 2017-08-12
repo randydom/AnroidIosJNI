@@ -90,7 +90,7 @@ class JSONValue;
 typedef std::vector<JSONValue *> JSONArray;
 typedef std::map<std::wstring, JSONValue *> JSONObject;
 
-#include "JSONValue.h"
+#include "JSONValue.hpp"
 
 class JSON {
     friend class JSONValue;

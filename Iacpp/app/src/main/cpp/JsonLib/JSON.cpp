@@ -22,7 +22,7 @@
  * THE SOFTWARE.
  */
 
-#include "JSON.h"
+#include "JSON.hpp"
 
 /**
  * Blocks off the public constructor

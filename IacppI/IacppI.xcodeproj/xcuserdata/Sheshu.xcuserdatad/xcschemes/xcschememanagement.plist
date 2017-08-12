@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>ContactsCoreLib.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 		<key>IacppI.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -12,6 +17,16 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>B3AC8A5E1F3D52B300D67C53</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B3AC8A811F3D546E00D67C53</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>B3AE1B471F3659F000FD0C9C</key>
 		<dict>
 			<key>primary</key>

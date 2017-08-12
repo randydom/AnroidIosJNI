@@ -27,7 +27,7 @@
 
 #include <vector>
 #include <string>
-#include "JSON.h"
+#include "JSON.hpp"
 
 class JSON;
 

@@ -7,8 +7,8 @@
 
 #include <string>
 #include <vector>
-#include "../model/Contact.h"
-#include "../webservice/ContactsWebService.h"
+#include "../model/Contact.hpp"
+#include "../webservice/ContactsWebService.hpp"
 
 class ContactsCoreApi {
 public:

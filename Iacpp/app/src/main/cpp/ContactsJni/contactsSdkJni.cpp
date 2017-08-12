@@ -1,6 +1,6 @@
 #include <jni.h>
 #include <string>
-#include "../ContactsCore/api/ContactsCoreApi.h"
+#include "../ContactsCore/api/ContactsCoreApi.hpp"
 #include  "contactsAndroidLog.h"
 
 extern "C" {
