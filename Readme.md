@@ -110,17 +110,14 @@ controller/Controller is base controller interface, which is implemented in Cont
 ## IacppI is the iOS project. 
 ```
     The static library for core generates 'contacts-core-lib' static library. It will be exported to ..\distribution folder.
-    All these variants rejected by xcode. xcode not linking them against code. So i have compiled all the sources in the xcode project.
-    Somehow xcode not picking up folder structure. so all files were linear and .h were converted to .hpp. Android JNI and ios sources were almost equal apart from these     header file issues.
+    Add the files the static libraries under Iacpp/distribution/contacts-core-lib/lib/IOS and /SIMULATOR64 to Xcode project.
+    Along with the header files mentioned above. And build the iOS project in Xcode. Check for any stale references. 	    
+
     UI is not developed in IOS. code is tested in from the logs.
 ```
 # File details:
     Core lib structure is similar to the above in the project folders(not on disk, only for project visibility).
-    api - api
-    webservice- mock webservice
-    JsonLib - json lib (thridparty)
-    model - model for contact.
-    ContactsIOSAPI - glue code for IOS.
+        ContactsIOSAPI - glue code for IOS.
         ContactsApiIos.cpp/hpp files to expose the interface with ios code. Similar to contactsSdkJni.cpp.
     ViewController.mm -- the code where this api is called and logs printed from here.
 # ------------------------Technology items used for this project---
@@ -137,10 +134,10 @@ controller/Controller is base controller interface, which is implemented in Cont
     11. attaching .a to the ios project.
    
 # ------------------------what can be done further---------------
-    3. ui for ios, listview/tableview.
-    4. code formatter for ios.
-    5. adding code from folders retaining folder structure and build from Android code base without copying.
-    6. junit and expresso recorder tests.
+    1. ui for ios, listview/tableview.
+    2. code formatter for ios.
+    3. in Xcode adding files with relative path from android project instead of absolute path. 
+    4. junit and expresso recorder tests.
 
 
 
