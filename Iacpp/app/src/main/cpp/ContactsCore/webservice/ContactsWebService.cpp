@@ -1,8 +1,9 @@
 #include "ContactsWebService.hpp"
 #include "../../JsonLib/JSONValue.hpp"
-#include <thread>
 #include <iostream>     // std::cout
 #include <sstream>      // std::stringstream
+#include <algorithm>
+#include <atomic>
 
 using namespace std;
 
@@ -83,28 +84,49 @@ void addContactWebservice(Contact *contact, int (*callback)(Contact *)) {
     t.detach();
 }
 
+std::atomic_bool gStopNotifierThread;
 
 void notifyUpdateDelayed(int (*callback)(Contact *, Contact *)) {
-    // timepass for few milli seconds, to feel async
-    std::this_thread::sleep_for(std::chrono::milliseconds(5000));
-    Contact *lastContact = sData->at(sData->size() - 1);
-    // Copy out the object to old contact
-    Contact *oldContact = new Contact(new std::string(*lastContact->getFirstName()),
-                                      new std::string(*lastContact->getLastName()),
-                                      new std::string(*lastContact->getPhoneNumber()));
-    // change something
-    std::string *phoneNumber = new std::string("332211");
-    lastContact->setPhoneNumber(phoneNumber);
-    // callback
-    callback(oldContact, lastContact);
+
+    // Keeping the infinite loop. When app exits, it should be stopped by killing the thread.
+    while (!gStopNotifierThread) {
+        std::srand(std::time(0)); // use current time as seed for random generator
+        int random_variable = std::rand();
+        // cut the random time to 10seconds.
+        random_variable %= 10000;
+        // timepass for few milli seconds, to feel async
+        std::this_thread::sleep_for(std::chrono::milliseconds(random_variable));
+
+        //After waiting for random time. pick a random item from list and update it.
+        random_variable = std::rand();
+        if(!gStopNotifierThread && sData!= nullptr){
+            int randomIndex = random_variable % (sData->size());
+
+            Contact *lastContact = sData->at(randomIndex);
+            if (lastContact != nullptr) {
+                // Copy out the object to old contact
+                Contact *oldContact = new Contact(new std::string(*lastContact->getFirstName()),
+                                                  new std::string(*lastContact->getLastName()),
+                                                  new std::string(*lastContact->getPhoneNumber()));
+                std::string *phoneNumber = lastContact->getPhoneNumber();
+                //phoneNumber = std::reverse_copy(phoneNumber->begin(), phoneNumber->end(),phoneNumber);
+                std::reverse(phoneNumber->begin(), phoneNumber->end());
+                //lastContact->setPhoneNumber(phoneNumber);
+                // callback
+                callback(oldContact, lastContact);
+            }
+        }
+
+    }
 }
 
-void notifyUpdateContact(int (*callback)(Contact *, Contact *)) {
+std::thread *notifyUpdateContact(int (*callback)(Contact *, Contact *)) {
+    gStopNotifierThread = false;
     // create thread and return.
-    std::thread t(notifyUpdateDelayed, callback);
-    t.detach();
+    std::thread *t = new std::thread(notifyUpdateDelayed, callback);
+    t->detach();
+    return t;
 }
-
 
 std::vector<Contact *> *initData() {
     // hook the sData to jni env to cleanp.
@@ -122,6 +144,7 @@ void clearData() {
                 delete (item);
         }
         delete (sData);
+        sData = nullptr;
     }
 }
 }

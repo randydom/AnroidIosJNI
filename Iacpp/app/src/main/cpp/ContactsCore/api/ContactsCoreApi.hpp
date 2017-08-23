@@ -7,12 +7,17 @@
 
 #include <string>
 #include <vector>
+#include <thread>
 #include "../model/Contact.hpp"
 #include "../webservice/ContactsWebService.hpp"
 
 class ContactsCoreApi {
+private:
+    std::thread *mNotifierThread;
 public:
     ContactsCoreApi();
+
+    ~ContactsCoreApi();
 
     std::vector<Contact *> *getContacts();
 

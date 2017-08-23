@@ -3,9 +3,26 @@
 //
 
 #include "ContactsCoreApi.hpp"
+#include <atomic>
+
+extern std::atomic_bool gStopNotifierThread;
 
 ContactsCoreApi::ContactsCoreApi() {
     initData();
+}
+
+void killNotifierThread(std::thread *thread) {
+    if (thread != nullptr && thread->joinable()) {
+        thread->join();
+        delete (thread);
+    }
+}
+
+ContactsCoreApi::~ContactsCoreApi() {
+    gStopNotifierThread = true;
+    killNotifierThread(mNotifierThread);
+    mNotifierThread = nullptr;
+    clearData();
 }
 
 std::vector<Contact *> *ContactsCoreApi::getContacts() {
@@ -18,5 +35,5 @@ void ContactsCoreApi::addContact(Contact *contact, int (*callback)(Contact *)) {
 }
 
 void ContactsCoreApi::setListener(int (*callback)(Contact *, Contact *)) {
-    notifyUpdateContact(callback);
+    this->mNotifierThread = notifyUpdateContact(callback);
 }

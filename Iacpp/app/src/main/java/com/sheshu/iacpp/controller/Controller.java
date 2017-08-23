@@ -15,4 +15,5 @@ public interface Controller {
     void triggerContactUpdateNative();
     void updateUiList();
     void showToast(JContact contact, boolean isUpdated);
+    void clearNativeItems();
 }

@@ -18,26 +18,32 @@ import java.util.ArrayList;
 class ContactsListAdapter extends BaseAdapter {
     private final LayoutInflater mInflator;
     private ArrayList<JContact> mContactsList;
+
     ContactsListAdapter(ArrayList<JContact> contacts, Activity activity) {
         mContactsList = contacts;
         mInflator = activity.getLayoutInflater();
     }
+
     public void setContacts(ArrayList<JContact> contacts) {
         mContactsList = contacts;
         notifyDataSetChanged();
     }
+
     @Override
     public int getCount() {
         return mContactsList != null ? mContactsList.size() : 0;
     }
+
     @Override
     public Object getItem(int i) {
         return (mContactsList != null && mContactsList.size() > i) ? mContactsList.get(i) : null;
     }
+
     @Override
     public long getItemId(int i) {
         return 0;
     }
+
     @Override
     public View getView(int i, View convertView, ViewGroup viewGroup) {
         if (convertView == null) {
@@ -48,20 +54,26 @@ class ContactsListAdapter extends BaseAdapter {
         if (vh != null) {
             JContact contact = (mContactsList != null && i < mContactsList.size()) ? mContactsList.get(i) : null;
             if (contact != null)
-                vh.setName(contact.getFirstName(), contact.getLastName());
+                vh.setFields(contact);
         }
         return convertView;
     }
-    class ViewHolder {
+
+    private class ViewHolder {
         final TextView mFirstName;
         final TextView mLastName;
+        final TextView mPhoneNumber;
+
         ViewHolder(View view) {
             mFirstName = view.findViewById(R.id.first_name);
             mLastName = view.findViewById(R.id.last_name);
+            mPhoneNumber = view.findViewById(R.id.phone_number);
         }
-        void setName(String firstname, String lastName) {
-            mFirstName.setText(firstname);
-            mLastName.setText(lastName);
+
+        void setFields(JContact contact) {
+            mFirstName.setText(contact.getFirstName());
+            mLastName.setText(contact.getLastName());
+            mPhoneNumber.setText(contact.getPhoneNumber());
         }
     }
 }

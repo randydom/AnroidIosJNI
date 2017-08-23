@@ -21,12 +21,14 @@ public class ContactListActivity extends AppCompatActivity {
                 .replace(R.id.fragment_container, new ContactListActivityFragment())
                 .commit();
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_contact_list, menu);
         return true;
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -39,6 +41,7 @@ public class ContactListActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
     /**
      * A native method that is implemented by the 'native-lib' native library,
      * which is packaged with this application.

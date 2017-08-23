@@ -15,18 +15,26 @@ cmake_minimum_required(VERSION 3.4.1)
 set(CMAKE_VERBOSE_MAKEFILE on)
 
 
+set(core_files src/main/cpp/ContactsCore/api/ContactsCoreApi.cpp
+               src/main/cpp/ContactsCore/model/Contact.cpp
+               src/main/cpp/ContactsCore/webservice/ContactsWebService.cpp
+               src/main/cpp/JsonLib/JSON.cpp
+               src/main/cpp/JsonLib/JSONValue.cpp)
+
+
 
 #-----------This is core library, it would be common for android and ios --------------------------
 #------------Adding json also here, avoiding more complex ways to link prebuilt static to static------------------
 #--- json lib from https://github.com/MJPA/SimpleJSON------------
-# TODO: check build variant abi validity for ios.
-add_library(contacts-core-lib STATIC
-    src/main/cpp/ContactsCore/api/ContactsCoreApi.cpp
-    src/main/cpp/ContactsCore/model/Contact.cpp
-    src/main/cpp/ContactsCore/webservice/ContactsWebService.cpp
-    src/main/cpp/JsonLib/JSON.cpp
-    src/main/cpp/JsonLib/JSONValue.cpp
-                )
+#-- Build Shared library for Android
+IF (${ANDROID})
+add_library(contacts-core-lib SHARED ${core_files})
+
+ELSE()
+# -- Static library for IOS.
+add_library(contacts-core-lib STATIC ${core_files})
+
+ENDIF()
 
 
 # copy out the lib binary... need to leave the static lib around to pass gradle check
