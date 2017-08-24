@@ -9,20 +9,14 @@ This App is to demonstrate Android IOS using common c++ library.
 ```
  Install  ios cmake toolchain from here https://github.com/cristeab/ios-cmake
 
-Unzip the ios.Cmake into folder similar to $NDK_ROOT/toolchains/IOS
+Unzip the ios.Cmake into folder similar to $NDK_ROOT/toolchains/IOS . Correct the path in the iosbuild.sh file in /app.
+
+IOS build is added as task to the build.gradle. Add the libraries once without copying to the IOS project. 
+in /app add executable permission ( chmod +x ./iosbuild.sh) for file iosbuild.sh and run android project.
+ It will build the IOS libraries at the end of the android build.
+After the build link 4 header files and static libraries to the IOS project and build IOS project in Xcode.
 
 
- To build the ios libraries from these libraries, use the below commands . after the build copy out the 4 header files to attach with static library.
- after that attach the libraries to the ios project and add header files to ios project.
-
-
-$ rmdir buildios
-$ mkdir buildios
-$ cd  buildios
-$ cmake .. -DCMAKE_TOOLCHAIN_FILE=$NDK_ROOT/toolchains/IOS/iOS.cmake -DIOS_PLATFORM=OS
-$ make
-$ cmake .. -DCMAKE_TOOLCHAIN_FILE=$NDK_ROOT/toolchains/IOS/iOS.cmake -DIOS_PLATFORM=SIMULATOR64
-$ make
 ```
 
 Now check the distribution folder you should see the folder /IOS/SIMULATOR64 AND /IOS/OS with the libraries.
@@ -42,7 +36,8 @@ $ /src/main/cpp/JsonLib/JSONValue.hpp
 Import the project in Xcode and check for static libraries and header files and build. 
 
 # Architecture
-#  -------------------------------Java---------------------
+
+#  Java
 # Java UI:
 ## Java sources:
 
@@ -79,7 +74,7 @@ controller/Controller is base controller interface, which is implemented in Cont
   will be delayed and posted to the UI through the callback.
  ContactsSDK->onContactUpdated->(ContactsListener)->onContactUpdated->Toast to user.
 ```
-##   ------------------- Native layer----------------------
+##    Native layer
 
 ## Root: main/cpp
 
@@ -105,7 +100,7 @@ controller/Controller is base controller interface, which is implemented in Cont
    #### JsonLib
     json lib from https://github.com/MJPA/SimpleJSON
 
-#    ---------------------------------IOS layer----------------
+#   IOS layer
 
 ## IacppI is the iOS project. 
 ```
@@ -120,7 +115,7 @@ controller/Controller is base controller interface, which is implemented in Cont
         ContactsIOSAPI - glue code for IOS.
         ContactsApiIos.cpp/hpp files to expose the interface with ios code. Similar to contactsSdkJni.cpp.
     ViewController.mm -- the code where this api is called and logs printed from here.
-# ------------------------Technology items used for this project---
+# Components used for this project---
     1. JNI.
     2. call back from different thread using std::thread
     3. attach the callback thread to the jvm to callback.
@@ -132,12 +127,11 @@ controller/Controller is base controller interface, which is implemented in Cont
     9. ios code to test the calls and print to log.
     10. toolchain to build ios compatible library from android studio.
     11. attaching .a to the ios project.
-   
-# ------------------------what can be done further---------------
+    12. Making common build from Android studio with cmake with external task.
+# what can be done further
     1. ui for ios, listview/tableview.
-    2. code formatter for ios.
-    3. in Xcode adding files with relative path from android project instead of absolute path. 
-    4. junit and expresso recorder tests.
+    2. junit and expresso recorder tests.
+    3. Build fat library similar to https://github.com/assimp/assimp/tree/master/port/iOS . Where each arch was built and added to single fat lib.
 
 
 

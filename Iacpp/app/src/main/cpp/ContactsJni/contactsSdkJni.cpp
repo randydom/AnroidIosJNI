@@ -33,14 +33,16 @@ static bool gInit;
  * @param env jni env variable. our token to the world.
  */
 void init(JNIEnv *env) {
-    if(!gInit){
+    if (!gInit) {
         env->GetJavaVM(&g_jvm);
         java_util_ArrayList = static_cast<jclass>(env->NewGlobalRef(
                 env->FindClass("java/util/ArrayList")));
         java_util_ArrayList_ = env->GetMethodID(java_util_ArrayList, "<init>", "(I)V");
         java_util_ArrayList_size = env->GetMethodID(java_util_ArrayList, "size", "()I");
-        java_util_ArrayList_get = env->GetMethodID(java_util_ArrayList, "get", "(I)Ljava/lang/Object;");
-        java_util_ArrayList_add = env->GetMethodID(java_util_ArrayList, "add", "(Ljava/lang/Object;)Z");
+        java_util_ArrayList_get = env->GetMethodID(java_util_ArrayList, "get",
+                                                   "(I)Ljava/lang/Object;");
+        java_util_ArrayList_add = env->GetMethodID(java_util_ArrayList, "add",
+                                                   "(Ljava/lang/Object;)Z");
         java_com_sheshu_iacpp_ContactsSDK_JContact = static_cast<jclass>(env->NewGlobalRef(
                 env->FindClass("com/sheshu/iacpp/model/JContact")));
         java_com_sheshu_iacpp_ContactsSDK_JContact_ = env->GetMethodID(
@@ -65,7 +67,6 @@ void init(JNIEnv *env) {
                 "(Lcom/sheshu/iacpp/model/JContact;Lcom/sheshu/iacpp/model/JContact;)V");
         gInit = true;
     }
-
 }
 
 static ContactsCoreApi *contactsCoreApi;
@@ -74,7 +75,6 @@ void freeAllStatic(JNIEnv *env) {
     if (contactsCoreApi != nullptr)
         delete (contactsCoreApi);
     contactsCoreApi = NULL;
-
     env->DeleteGlobalRef(java_util_ArrayList);
     java_util_ArrayList = nullptr;
     env->DeleteGlobalRef(java_com_sheshu_iacpp_ContactsSDK_JContact);
@@ -84,7 +84,6 @@ void freeAllStatic(JNIEnv *env) {
     env = nullptr;
     g_jvm = nullptr;
     gInit = false;
-
 }
 
 JNIEXPORT void JNICALL
@@ -100,8 +99,7 @@ ContactsCoreApi *getContactsApi() {
 }
 
 int contactAdded(Contact *cContact) {
-
-    if(g_jvm!= nullptr){
+    if (g_jvm != nullptr) {
         JNIEnv *env;
 
         // double check it's all ok
@@ -118,8 +116,7 @@ int contactAdded(Contact *cContact) {
         }
         jobject jContact = getJavaObjectFromCContact(env, cContact);
         env->CallStaticVoidMethod(java_com_sheshu_iacpp_ContactsSDK_ContactsSDK_class,
-                                        contact_callback_contact_added, jContact);
-
+                                  contact_callback_contact_added, jContact);
         env->DeleteLocalRef(jContact);
         env->ExceptionClear();
         if (env->ExceptionCheck()) {
@@ -128,14 +125,12 @@ int contactAdded(Contact *cContact) {
         g_jvm->DetachCurrentThread();
         LOGD("Contact added ");
     }
-
-
     return 0;
 }
 
 int contactUpdated(Contact *oldContact, Contact *newContact) {
     LOGD("Contact updated ");
-    if(g_jvm!= nullptr) {
+    if (g_jvm != nullptr) {
         JNIEnv *env;
 
         // double check it's all ok
@@ -153,9 +148,9 @@ int contactUpdated(Contact *oldContact, Contact *newContact) {
         jobject jOldContact = getJavaObjectFromCContact(env, oldContact);
         jobject jNewContact = getJavaObjectFromCContact(env, newContact);
         env->CallStaticVoidMethod(java_com_sheshu_iacpp_ContactsSDK_ContactsSDK_class,
-                                        contact_callback_contact_updated, jOldContact, jNewContact);
+                                  contact_callback_contact_updated, jOldContact, jNewContact);
         // Old contact is a copy, so need to delete here.
-        delete(oldContact);
+        delete (oldContact);
         // new contact is still referenced by our global memory, so no need to delete.
         //delete(newContact);
 
@@ -168,7 +163,6 @@ int contactUpdated(Contact *oldContact, Contact *newContact) {
         g_jvm->DetachCurrentThread();
     }
     return 0;
-
 }
 #pragma mark - Support functions----------------------------------------------
 
@@ -232,19 +226,9 @@ Contact *getContactFromJavaContact(JNIEnv *env, jobject jContact) {
 }
 
 jobject getJavaObjectFromCContact(JNIEnv *env, Contact *contact) {
-
-    LOGD("firstname: %s",contact->getFirstName()->c_str());
-    LOGD("lastName: %s",contact->getLastName()->c_str());
-    LOGD("phoneNumber: %s",contact->getPhoneNumber()->c_str());
-
-
-
     jstring firstName = env->NewStringUTF(contact->getFirstName()->c_str());
-    LOGD("After firstname");
     jstring lastName = env->NewStringUTF(contact->getLastName()->c_str());
-    LOGD("After last");
     jstring phoneNumber = env->NewStringUTF(contact->getPhoneNumber()->c_str());
-    LOGD("After phone");
 
     jobject jContact = env->NewObject(java_com_sheshu_iacpp_ContactsSDK_JContact,
                                       java_com_sheshu_iacpp_ContactsSDK_JContact_, firstName,

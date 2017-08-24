@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B3AC8AB11F3ECE3700D67C53 /* contacts-core-lib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B3AC8AB01F3ECE3700D67C53 /* contacts-core-lib.a */; };
-		B3AC8AB31F3ECE3F00D67C53 /* contacts-core-lib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B3AC8AB21F3ECE3F00D67C53 /* contacts-core-lib.a */; };
+		B38FD66C1F4D3B4600BB3B8E /* contacts-core-lib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B3AC8AB01F3ECE3700D67C53 /* contacts-core-lib.a */; settings = {ATTRIBUTES = (Weak, ); }; };
+		B38FD66D1F4D3E0500BB3B8E /* contacts-core-lib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B3AC8AB21F3ECE3F00D67C53 /* contacts-core-lib.a */; settings = {ATTRIBUTES = (Weak, ); }; };
 		B3AE1B4D1F3659F000FD0C9C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B3AE1B4C1F3659F000FD0C9C /* main.m */; };
 		B3AE1B501F3659F000FD0C9C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B3AE1B4F1F3659F000FD0C9C /* AppDelegate.m */; };
 		B3AE1B531F3659F000FD0C9C /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = B3AE1B521F3659F000FD0C9C /* ViewController.mm */; };
@@ -20,7 +20,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		B3AC8A8B1F3D559C00D67C53 /* ContactsCore */ = {isa = PBXFileReference; lastKnownFileType = folder; name = ContactsCore; path = ContactsCoreLib/ContactsCoreLib/ContactsCoreLib/ContactsCore; sourceTree = "<group>"; };
 		B3AC8A8D1F3D55C400D67C53 /* IacppI.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = IacppI.xcodeproj; sourceTree = "<group>"; };
 		B3AC8A9E1F3ECBE700D67C53 /* OS */ = {isa = PBXFileReference; lastKnownFileType = folder; name = OS; path = "../Iacpp/distribution/contacts-core-lib/lib/IOS/OS"; sourceTree = "<group>"; };
 		B3AC8A9F1F3ECBE700D67C53 /* SIMULATOR64 */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SIMULATOR64; path = "../Iacpp/distribution/contacts-core-lib/lib/IOS/SIMULATOR64"; sourceTree = "<group>"; };
@@ -28,8 +27,6 @@
 		B3AC8AA31F3ECC4100D67C53 /* Contact.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Contact.hpp; path = ../Iacpp/app/src/main/cpp/ContactsCore/model/Contact.hpp; sourceTree = "<group>"; };
 		B3AC8AA41F3ECC7400D67C53 /* JSON.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = JSON.hpp; path = ../Iacpp/app/src/main/cpp/JsonLib/JSON.hpp; sourceTree = "<group>"; };
 		B3AC8AA51F3ECC7400D67C53 /* JSONValue.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = JSONValue.hpp; path = ../Iacpp/app/src/main/cpp/JsonLib/JSONValue.hpp; sourceTree = "<group>"; };
-		B3AC8AA61F3ECD0000D67C53 /* libcontacts-core-lib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libcontacts-core-lib.a"; path = "../Iacpp/distribution/contacts-core-lib/lib/IOS/OS/libcontacts-core-lib.a"; sourceTree = "<group>"; };
-		B3AC8AA81F3ECD1200D67C53 /* libcontacts-core-lib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libcontacts-core-lib.a"; path = "../Iacpp/distribution/contacts-core-lib/lib/IOS/SIMULATOR64/libcontacts-core-lib.a"; sourceTree = "<group>"; };
 		B3AC8AB01F3ECE3700D67C53 /* contacts-core-lib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "contacts-core-lib.a"; path = "../Iacpp/distribution/contacts-core-lib/lib/IOS/SIMULATOR64/contacts-core-lib.a"; sourceTree = "<group>"; };
 		B3AC8AB21F3ECE3F00D67C53 /* contacts-core-lib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "contacts-core-lib.a"; path = "../Iacpp/distribution/contacts-core-lib/lib/IOS/OS/contacts-core-lib.a"; sourceTree = "<group>"; };
 		B3AE1B481F3659F000FD0C9C /* IacppI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IacppI.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -42,20 +39,9 @@
 		B3AE1B571F3659F000FD0C9C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B3AE1B5A1F3659F000FD0C9C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B3AE1B5C1F3659F000FD0C9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B3AE1B671F365CD900FD0C9C /* libcontacts-core-lib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libcontacts-core-lib.a"; path = "../../../Downloads/distribution/contacts-core-lib/lib/x86_64/libcontacts-core-lib.a"; sourceTree = "<group>"; };
 		B3AE1B691F36642600FD0C9C /* libstdc++.6.0.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.0.9.tbd"; path = "usr/lib/libstdc++.6.0.9.tbd"; sourceTree = SDKROOT; };
 		B3AE1B6B1F3666A200FD0C9C /* ContactsApiIos.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ContactsApiIos.cpp; sourceTree = "<group>"; };
 		B3AE1B6C1F3666A200FD0C9C /* ContactsApiIos.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ContactsApiIos.hpp; sourceTree = "<group>"; };
-		B3AE1B701F366A8D00FD0C9C /* arm64-v8a */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "arm64-v8a"; path = "../../../Downloads/distribution/contacts-core-lib/lib/arm64-v8a"; sourceTree = "<group>"; };
-		B3AE1B711F366A8D00FD0C9C /* armeabi */ = {isa = PBXFileReference; lastKnownFileType = folder; name = armeabi; path = "../../../Downloads/distribution/contacts-core-lib/lib/armeabi"; sourceTree = "<group>"; };
-		B3AE1B721F366A8D00FD0C9C /* armeabi-v7a */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "armeabi-v7a"; path = "../../../Downloads/distribution/contacts-core-lib/lib/armeabi-v7a"; sourceTree = "<group>"; };
-		B3AE1B731F366A8D00FD0C9C /* mips */ = {isa = PBXFileReference; lastKnownFileType = folder; name = mips; path = "../../../Downloads/distribution/contacts-core-lib/lib/mips"; sourceTree = "<group>"; };
-		B3AE1B741F366A8D00FD0C9C /* mips64 */ = {isa = PBXFileReference; lastKnownFileType = folder; name = mips64; path = "../../../Downloads/distribution/contacts-core-lib/lib/mips64"; sourceTree = "<group>"; };
-		B3AE1B751F366A8D00FD0C9C /* x86 */ = {isa = PBXFileReference; lastKnownFileType = folder; name = x86; path = "../../../Downloads/distribution/contacts-core-lib/lib/x86"; sourceTree = "<group>"; };
-		B3AE1B761F366A8D00FD0C9C /* x86_64 */ = {isa = PBXFileReference; lastKnownFileType = folder; name = x86_64; path = "../../../Downloads/distribution/contacts-core-lib/lib/x86_64"; sourceTree = "<group>"; };
-		B3AE1B7E1F366AEB00FD0C9C /* libcontacts-core-libeabi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libcontacts-core-libeabi.a"; path = "../../../Downloads/distribution/three/libcontacts-core-libeabi.a"; sourceTree = "<group>"; };
-		B3AE1B7F1F366AEB00FD0C9C /* libcontacts-core-libv7.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libcontacts-core-libv7.a"; path = "../../../Downloads/distribution/three/libcontacts-core-libv7.a"; sourceTree = "<group>"; };
-		B3AE1B801F366AEB00FD0C9C /* libcontacts-core-libx8664.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libcontacts-core-libx8664.a"; path = "../../../Downloads/distribution/three/libcontacts-core-libx8664.a"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,8 +50,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				B3AE1B6A1F36642600FD0C9C /* libstdc++.6.0.9.tbd in Frameworks */,
-				B3AC8AB11F3ECE3700D67C53 /* contacts-core-lib.a in Frameworks */,
-				B3AC8AB31F3ECE3F00D67C53 /* contacts-core-lib.a in Frameworks */,
+				B38FD66D1F4D3E0500BB3B8E /* contacts-core-lib.a in Frameworks */,
+				B38FD66C1F4D3B4600BB3B8E /* contacts-core-lib.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -153,24 +139,10 @@
 		B3AE1B661F365CD900FD0C9C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				B3AC8AA81F3ECD1200D67C53 /* libcontacts-core-lib.a */,
-				B3AC8AA61F3ECD0000D67C53 /* libcontacts-core-lib.a */,
 				B3AC8A9E1F3ECBE700D67C53 /* OS */,
 				B3AC8A9F1F3ECBE700D67C53 /* SIMULATOR64 */,
 				B3AC8A8D1F3D55C400D67C53 /* IacppI.xcodeproj */,
-				B3AC8A8B1F3D559C00D67C53 /* ContactsCore */,
-				B3AE1B7E1F366AEB00FD0C9C /* libcontacts-core-libeabi.a */,
-				B3AE1B7F1F366AEB00FD0C9C /* libcontacts-core-libv7.a */,
-				B3AE1B801F366AEB00FD0C9C /* libcontacts-core-libx8664.a */,
-				B3AE1B701F366A8D00FD0C9C /* arm64-v8a */,
-				B3AE1B711F366A8D00FD0C9C /* armeabi */,
-				B3AE1B721F366A8D00FD0C9C /* armeabi-v7a */,
-				B3AE1B731F366A8D00FD0C9C /* mips */,
-				B3AE1B741F366A8D00FD0C9C /* mips64 */,
-				B3AE1B751F366A8D00FD0C9C /* x86 */,
-				B3AE1B761F366A8D00FD0C9C /* x86_64 */,
 				B3AE1B691F36642600FD0C9C /* libstdc++.6.0.9.tbd */,
-				B3AE1B671F365CD900FD0C9C /* libcontacts-core-lib.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -393,6 +365,7 @@
 				"OTHER_LDFLAGS[arch=*]" = "-v";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sheshu.IacppI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -413,6 +386,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.sheshu.IacppI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				"VALID_ARCHS[sdk=*]" = "arm64 armv7 armv7s";
 			};
 			name = Release;

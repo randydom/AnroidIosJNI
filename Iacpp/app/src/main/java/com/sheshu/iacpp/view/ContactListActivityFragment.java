@@ -16,13 +16,10 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.sheshu.iacpp.R;
+import com.sheshu.iacpp.controller.ContactsController;
 import com.sheshu.iacpp.controller.Controller;
 import com.sheshu.iacpp.model.ContactsListener;
-import com.sheshu.iacpp.model.ContactsSDK;
 import com.sheshu.iacpp.model.JContact;
-
-import java.util.ArrayList;
-import java.util.Arrays;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -32,85 +29,37 @@ public class ContactListActivityFragment extends Fragment {
     ListView mListView;
     ContactsListAdapter mListAdapter;
 
-    // callback will be in different thread, so use this method to render list in main thread.
     void updateContactsList() {
-        if (getActivity() != null && !getActivity().isFinishing() && !getActivity().isDestroyed()) {
-            getActivity().runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    mListAdapter.setContacts(mController.getContactsFromNative());
-                }
-            });
-        }
+        mListAdapter.setContacts(mController.getContactsFromNative());
     }
 
     // Controller for ndk calls.
-    Controller mController = new Controller() {
-        private ContactsSDK contactsSDK;
-        private ContactsListener mNativeListener = new ContactsListener() {
-            @Override
-            public void onContactAdded(final JContact contact) {
-                Log.e(TAG, "GOT CALLBACK FROM NATIVE" + contact.getFirstName() + " contact added");
-                getActivity().runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        Toast.makeText(getActivity(), "Contact Created: " + contact.getFirstName() + " " + contact.getPhoneNumber(), Toast.LENGTH_SHORT).show();
-                    }
-                });
-            }
+    Controller mController;
+    private ContactsListener mNativeListener = new ContactsListener() {
+        @Override
+        public void onContactAdded(final JContact contact) {
+            Log.e(TAG, "GOT CALLBACK FROM NATIVE" + contact.getFirstName() + " contact added");
+            getActivity().runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    Toast.makeText(getActivity(), "Contact Created: " + contact.getFirstName() + " " + contact.getPhoneNumber(), Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
 
-            @Override
-            public void onContactUpdated(final JContact newContact, final JContact oldContact) {
-                Log.e(TAG, "onContactUpdated" + oldContact.getFirstName() + " contact updated" + " new contact: " + newContact);
+        @Override
+        public void onContactUpdated(final JContact newContact, final JContact oldContact) {
+            Log.e(TAG, "onContactUpdated" + oldContact.getFirstName() + " contact updated" + " new contact: " + newContact);
+            // callback will be in different thread, so use this block to render list in main thread.
+            if (getActivity() != null && !getActivity().isFinishing() && !getActivity().isDestroyed()) {
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         Toast.makeText(getActivity(), "Old Number : " + oldContact.getPhoneNumber() + " New number" + newContact.getPhoneNumber(), Toast.LENGTH_SHORT).show();
-                        mController.updateUiList();
+                        updateContactsList();
                     }
                 });
             }
-        };
-
-        @Override
-        public void initNativeSdk() {
-            // make sure somebody loads native library System.loadLibrary("contactsSdk-lib");
-            contactsSDK = new ContactsSDK();
-        }
-
-        @Override
-        public void setSdkStaticListener() {
-            contactsSDK.setStaticListener(mNativeListener);
-        }
-
-        @Override
-        public ArrayList<JContact> getContactsFromNative() {
-            ArrayList<JContact> contactsFromNative = contactsSDK.getContacts();
-            Log.e(TAG, contactsFromNative.toString() + contactsFromNative.size() + Arrays.deepToString(contactsFromNative.toArray()));
-            return contactsFromNative;
-        }
-
-        @Override
-        public void addContactNative(JContact contact) {
-            contactsSDK.addContact(contact);
-        }
-
-        @Override
-        public void triggerContactUpdateNative() {
-            contactsSDK.notifyContactUpdated();
-        }
-
-        public void clearNativeItems() {
-            contactsSDK.clearNativeItems();
-        }
-
-        @Override
-        public void updateUiList() {
-            updateContactsList();
-        }
-
-        @Override
-        public void showToast(JContact contact, boolean isUpdated) {
         }
     };
 
@@ -123,6 +72,7 @@ public class ContactListActivityFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_contact_list, container, false);
         Toolbar toolbar = (Toolbar) view.findViewById(R.id.toolbar);
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
+        mController = new ContactsController(mNativeListener);
         FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
